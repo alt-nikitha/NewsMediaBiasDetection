@@ -12,11 +12,9 @@ def make_soup(URL):
 
 
 
-# biases=['left','leftcenter','right-center','right','center']
-biases=['right-center']
+biases=['left','leftcenter','right-center','right','center']
 # print(soup.prettify()) 
 
-# data={}
 def make_csv(bias):
     URL = "https://mediabiasfactcheck.com/"
     abs_url=URL+bias+'/'
@@ -35,11 +33,8 @@ def make_csv(bias):
             names.append(row.a['href'][ind+1:-1])
             # print(row.a['href'][ind+1:-1],"______",table[-1]['href'])
             
-            # break
-            # left_urls.append()
         except:
             continue
-    # print(left_urls,left_names)
     data={'URL':urls,
             'Name':names}
     df=pd.DataFrame(data) 
