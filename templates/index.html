@@ -22,10 +22,10 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
-
-  <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script> 
-  <script src= "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"> </script> 
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"> </script> 
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -91,15 +91,34 @@
           
           
         </div>
-        <div class="col-md-6 dropdown pr-md-1">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-          <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">HTML</a></li>
-            <li><a href="#">CSS</a></li>
-            <li><a href="#">JavaScript</a></li>
+        <!-- <div class="col-md-6 dropdown pr-md-1">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">Select News Source<span class="caret"></span></button>
+          <ul class="dropdown-menu dropdown-primary force-scroll">
+            <li><a href="#">NewsSource1</a></li>
+            <li><a href="#">NewsSource 2 </a></li>
+            <li><a href="#">NewsSource 3</a></li>
+            <li><a href="#">NewsSource1</a></li>
+            <li><a href="#">NewsSource 2 </a></li>
+            <li><a href="#">NewsSource 3</a></li>
+            <li><a href="#">NewsSource1</a></li>
+            <li><a href="#">NewsSource 2 </a></li>
+            <li><a href="#">NewsSource 3</a></li>
+            <li><a href="#">NewsSource1</a></li>
+            <li><a href="#">NewsSource 2 </a></li>
+            <li><a href="#">NewsSource 3</a></li>
+            <li><a href="#">NewsSource1</a></li>
+            <li><a href="#">NewsSource 2 </a></li>
+            <li><a href="#">NewsSource 3</a></li>
+            
           </ul>
-        </div>
+        </div> -->
+        <select name='menu' class=myDropdown>
+          <option value='1'>first item</option>
+          
+          
+         
+        </select>
+        
         <p>
           
         </p>

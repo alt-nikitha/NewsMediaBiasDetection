@@ -291,12 +291,10 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   background: #fd8841;
 }
 
-
-#hero>.php-email-form>.search-box {
-  margin: 100px auto;
-}
-#hero>.php-email-form>.search-box .btn-light {
-  border: 1px solid #ced4da;
+.myDropdown
+{
+   height: 50px;
+   overflow: auto;
 }
 
 
