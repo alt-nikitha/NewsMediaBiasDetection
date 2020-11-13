@@ -113,8 +113,9 @@
           </ul>
         </div> -->
         <select name='menu' class=myDropdown>
-          <option value='1'>first item</option>
-          
+          {% for n in ns %}
+          <option value='1'>{{n}}</option>
+          {% endfor %}
           
          
         </select>
