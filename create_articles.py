@@ -13,3 +13,4 @@ for f in os.listdir(folder):
         frames=[all_articles,df]
         all_articles=pd.concat(frames,sort=False)
 all_articles.to_csv('all_articles.csv')
+
