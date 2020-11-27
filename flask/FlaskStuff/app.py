@@ -2,19 +2,24 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://sql12378628:FFTvVyv2fh@sql12.freemysqlhosting.net:3306/sql12378628'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/nmbd'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-class Comments(db.Model):
+# class Comments(db.Model):
+# 	id = db.Column(db.Integer, primary_key=True)
+# 	name = db.Column(db.String(20))
+# 	comment = db.Column(db.String(1000))
+
+class NewsSource(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(20))
-	comment = db.Column(db.String(1000))
+	URL = db.Column(db.String(30))
 
 @app.route('/')
 def index():
-	result = Comments.query.all()
+	result = NewsSource.query.all()
 
 	return render_template('index.html', result=result)
 
@@ -25,9 +30,9 @@ def sign():
 @app.route('/process', methods=['POST'])
 def process():
 	name = request.form['name']
-	comment = request.form['comment']
+	url = request.form['comment']
 
-	signature = Comments(name=name, comment=comment)
+	signature = NewsSource(name=name, URL=url)
 	db.session.add(signature)
 	db.session.commit()
 

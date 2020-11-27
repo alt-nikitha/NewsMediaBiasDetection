@@ -1,2 +1,9 @@
 env/
 .vscode/
+*.pyc
+__pycache__
+.DS_Store
+all_articles.csv
+articleswithlabels.csv
+test.csv
+test.py
