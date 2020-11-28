@@ -677,3 +677,6 @@ section {
 }
 
 
+select {
+  text-indent: 5px;
+}

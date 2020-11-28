@@ -29,7 +29,8 @@
         <button type="submit" name="submit1" value="submit">Detect Bias </button>
       </form>
       <form action="{{ url_for('select') }}" method="POST" class="php-email-form">
-        <select name='menu' class=myDropdown>
+        <select name='menu' class=myDropdown data-placeholder="Choose News Source">
+          <option value="" disabled selected>Choose News Source</option>
           {% for n in ns %}
           <option value={{n}}>{{ n }}</option>
           {% endfor %}
@@ -206,12 +207,12 @@
             <div class="info">
               <div class="address">
                 <i class="bx bx-map"></i>
-                <p>A108 Adam Street<br>New York, NY 535022</p>
+                <p>Santorini<br>Junipero, 535022</p>
               </div>
 
               <div class="email">
                 <i class="bx bx-envelope"></i>
-                <p>info@example.com</p>
+                <p>neex@aicookies.com</p>
               </div>
 
               <div class="phone">
@@ -219,12 +220,13 @@
                 <p>+1 5589 55488 55s</p>
               </div>
             </div>
-
+            
             <div class="social-links">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="https://github.com/alt-nikitha/NewsMediaBiasDetection" class="github"><i class="bx bxl-github"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> 
+              <a href="#" class="reddit"><i class="bx bxl-reddit"></i></a> 
             </div>
 
           </div>

@@ -26,15 +26,15 @@ class NewsSource(db.Model):
 #         db.session.add(new)
 #         db.session.commit()
 
-@app.route('/',methods=['GET','POST'])
+@app.route('/')
 def index():
     all_news_sources=NewsSource.query.order_by(NewsSource.name).all()
     news_sources=[]
     for ele in all_news_sources:
         news_sources.append(ele.name)
     # news_sources=newsources['Name'].to_list()
-    
     return render_template('index.html',ns=news_sources)
+
 @app.route('/detect',methods=['GET','POST'])
 def detect():
     url=request.form.get('name')
@@ -50,6 +50,7 @@ def select():
 
         return render_template('results.html',ns=req, bias=obj.bias,URL=obj.URL)
     return render_template('index.html',ns=news_sources)
+
 if __name__=='__main__':
     # add_to_db()
     app.run(debug=True)
