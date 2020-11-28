@@ -10,10 +10,10 @@
       <h1>Welcome to News Media Bias Detection</h1>
       <h2>Enter the article URL or choose from the options</h2>
 
-      <form action="" method="post" role="form" class="php-email-form">
+      <form action="{{ url_for('detect') }}" method="post" role="form" class="php-email-form">
         <div class="row no-gutters">
           <div class="col-md-6 form-group pr-md-1">
-            <input type="text" name="name" class="form-control" id="name" placeholder="Enter URL" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+            <input type="url" name="name" class="form-control" id="name" placeholder="Enter URL" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
             <div class="validate"></div>
           </div>
           <!-- <div class="col-md-6 form-group pl-md-1">
@@ -26,15 +26,15 @@
           
         </p>
         
-        <button type="submit" name="submit" value="submit">Detect Bias </button>
+        <button type="submit" name="submit1" value="submit">Detect Bias </button>
       </form>
-      <form method="POST" class="php-email-form">
+      <form action="{{ url_for('select') }}" method="POST" class="php-email-form">
         <select name='menu' class=myDropdown>
           {% for n in ns %}
           <option value={{n}}>{{ n }}</option>
           {% endfor %}
         </select>
-        <button type="submit" name="submit" value="submit">Choose </button>
+        <button type="submit" name="submit2" value="submit">Choose </button>
       </form>
        
     </div>

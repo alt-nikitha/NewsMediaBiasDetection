@@ -33,6 +33,15 @@ def index():
     for ele in all_news_sources:
         news_sources.append(ele.name)
     # news_sources=newsources['Name'].to_list()
+    
+    return render_template('index.html',ns=news_sources)
+@app.route('/detect',methods=['GET','POST'])
+def detect():
+    url=request.form.get('name')
+    return render_template('results.html',ns="haha", bias="left",URL=url)
+
+@app.route('/select',methods=['GET','POST'])
+def select():
     if request.method == "POST":
 
         req = request.form['menu']
@@ -41,7 +50,6 @@ def index():
 
         return render_template('results.html',ns=req, bias=obj.bias,URL=obj.URL)
     return render_template('index.html',ns=news_sources)
-
 if __name__=='__main__':
     # add_to_db()
     app.run(debug=True)
