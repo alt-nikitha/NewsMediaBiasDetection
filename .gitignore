@@ -6,4 +6,4 @@ __pycache__
 all_articles.csv
 articleswithlabels.csv
 test.csv
-test.py
+finetuned_BERT_epoch_5.model

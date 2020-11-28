@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request
 import pandas as pd
 from flask_sqlalchemy import SQLAlchemy 
+import pymongo
+from pymongo import MongoClient 
+import newspaper 
+from newspaper import Article
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/nmbd'
@@ -26,6 +30,15 @@ class NewsSource(db.Model):
 #         db.session.add(new)
 #         db.session.commit()
 
+
+##Mongo Part
+## This is my cluster , which is linked to my specific IP address
+cluster=MongoClient("mongodb+srv://neelb:NewsBiasDetect246@newsbiasdetection.bxxdo.mongodb.net/<dbname>?retryWrites=true&w=majority")
+db=cluster["test"] ##database name
+collection =db["test1"] ##collection
+#collection.insert_one(post)
+#results = collection.delete_one({"_id":1})
+
 @app.route('/')
 def index():
     all_news_sources=NewsSource.query.order_by(NewsSource.name).all()
@@ -38,7 +51,27 @@ def index():
 @app.route('/detect',methods=['GET','POST'])
 def detect():
     url=request.form.get('name')
-    return render_template('results.html',ns="haha", bias="left",URL=url)
+    article = Article(url)
+    article.download()
+    article.parse()
+    author =article.authors
+    date=article.publish_date
+    text= article.text
+
+    ##Post is the data you want to enter into the database. Not specifying an ID generates a random one 
+    post= {"author": author[0], "source":article.source_url, "content":text,"date":date}
+
+    collection.insert_one(post)
+    context=dict(
+        ns="haha",
+        bias="left",
+        URL=url,
+        author=author,
+        date=date,
+        text=text,
+        flag=1
+    )
+    return render_template('results.html', **context)
 
 @app.route('/select',methods=['GET','POST'])
 def select():
@@ -48,7 +81,7 @@ def select():
         obj=NewsSource.query.filter_by(name=req).first_or_404()
         print(obj)
 
-        return render_template('results.html',ns=req, bias=obj.bias,URL=obj.URL)
+        return render_template('results.html',ns=req, bias=obj.bias,URL=obj.URL, flag=0)
     return render_template('index.html',ns=news_sources)
 
 if __name__=='__main__':

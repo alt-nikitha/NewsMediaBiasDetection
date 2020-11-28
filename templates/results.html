@@ -2,10 +2,25 @@
 {% block content %}
 <section id="hero">
     <div class="hero-container">
-        <h1>{{ns}} is {{bias}} biased </h1>
-        <h2><a href="{{URL}}" style="color:black">
-            Click here to visit {{ns}}
-        </a></h2>
+        {% if flag %}
+            <h1>The article is {{bias}} biased </h1>
+            <h2><a href="{{URL}}" style="color:black">
+                Click here to visit the article <br>
+                
+            </a></h2>
+            <p style= color:blanchedalmond>
+                Date of Publication : {{date}}<br>
+                Author : {{author}}<br>
+                Article body : {{text}}<br>
+            </p>
+        
+        {% else %}
+            <h1>{{ns}} is {{bias}} biased </h1>
+            <h2><a href="{{URL}}" style="color:black">
+                Click here to visit {{ns}} <br>
+                
+            </a></h2>
+        {% endif %}
     </div>
   </section>
 {% endblock content %}
