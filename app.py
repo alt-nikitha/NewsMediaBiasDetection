@@ -88,16 +88,9 @@ def detect():
     author =article.authors
     date=article.publish_date
     text= article.text
-
-
-    # textsplit=text.split(' ')
-    # print(len(textsplit))
-    # if(len(textsplit)>512):
-    #     limittext=textsplit[:512]
-    #     print(len(limittext))
-    #     newtext=' '.join(limittext)
-    # else:
-    #     newtext=text
+    article.nlp()
+    summary= article.summary
+    title= article.title
     
     inputs = tokenizer(text, padding='max_length', return_tensors='pt',truncation=True)
     # print(len(inputs))
@@ -108,25 +101,19 @@ def detect():
     pred_labels = np.argmax(outputs[0].cpu().detach().numpy(), axis=1).tolist()
 
     ##Post is the data you want to enter into the database. Not specifying an ID generates a random one 
-    post= {"author": author[0], "source":article.source_url, "content":text,"date":date}
+    post= {"author": author[0], "source":article.source_url, "content":text,"date":date,"summary":summary,"title":title}
     collection.insert_one(post)
 
-    # textsplit=text.split('.')
-    # print(len(textsplit))
-    # if(len(textsplit)>20):
-    #     limittext=textsplit[:20]
-    #     # print(len(limittext))
-    #     newtext='.'.join(limittext)
-    # else:
-    #     newtext=text
+    
     
     context=dict(
-        ns="haha",
+        ns=article.source_url,
         bias=inverse_dic[pred_labels[0]],
         URL=url,
         author=author,
         date=date,
-        # text=newtext,
+        title=title,
+        summary=summary,
         flag=1
     )
     return render_template('results.html', **context)

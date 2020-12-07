@@ -3,20 +3,23 @@
 <section id="hero">
     <div class="hero-container">
         {% if flag %}
-            <h1>The article is {{bias}} biased </h1>
-            <h2><a href="{{URL}}" style="color:black">
+            <h1 style="color:teal">{{title}} - {{bias}} biased </h1>
+            <h2><a href="{{URL}}" style="color:whitesmoke">
                 Click here to visit the article <br>
                 
             </a></h2>
             <p style= color:blanchedalmond>
                 Date of Publication : {{date}}<br>
                 Author : {{author}}<br>
+                News Source : {{ns}} <br>
+                Summary :<br>
+                {{summary}}
                 <!-- Article body : {{text}}<br> -->
             </p>
         
         {% else %}
-            <h1>{{ns}} is {{bias}} biased </h1>
-            <h2><a href="{{URL}}" style="color:black">
+            <h1 style="color:teal">{{ns}} is {{bias}} biased </h1>
+            <h2><a href="{{URL}}" style="color:whitesmoke">
                 Click here to visit {{ns}} <br>
                 
             </a></h2>

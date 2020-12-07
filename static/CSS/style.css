@@ -205,7 +205,8 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 
 #hero .php-email-form .error-message {
   display: none;
-  color: #fff;
+  /* color: #fff; */
+  color:black;
   background: #ed3c0d;
   text-align: center;
   padding: 15px;
