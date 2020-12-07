@@ -15,7 +15,7 @@ The accuracy of the data we provide to you is backed by Media Bias Fact Check, a
 
 <hr>
 
-# Developing and Deploying this project for yourself
+# Developing and Deploying this project 
 
 To develop this project from scratch, first create a virtual environment: <br>
 ` python3 -m venv env ` <br>
