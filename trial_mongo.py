@@ -18,8 +18,10 @@ article.parse()
 author =article.authors
 date=article.publish_date
 text= article.text
+summary= article.summary
+title= article.title
 
 ##Post is the data you want to enter into the database. Not specifying an ID generates a random one 
-post= {"_id":2,"author": author[0], "source":article.source_url, "content":text,"date":date}
+post= {"_id":2,"author": author[0], "source":article.source_url, "content":text,"date":date,"summary":summary,"title":title}
 
 collection.insert_one(post)
