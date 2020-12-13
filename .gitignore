@@ -7,3 +7,9 @@ all_articles.csv
 articleswithlabels.csv
 test.csv
 finetuned_BERT_epoch_5.model
+randomstuff.py
+authors.csv
+articles.csv
+writes_for.csv
+contains.csv
+writes.csv

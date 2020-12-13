@@ -67,8 +67,7 @@ class NewsSource(db.Model):
 cluster=MongoClient("mongodb+srv://neelb:NewsBiasDetect246@newsbiasdetection.bxxdo.mongodb.net/<dbname>?retryWrites=true&w=majority")
 db=cluster["test"] ##database name
 collection =db["test1"] ##collection
-#collection.insert_one(post)
-#results = collection.delete_one({"_id":1})
+
 
 @app.route('/')
 def index():
@@ -101,7 +100,7 @@ def detect():
     pred_labels = np.argmax(outputs[0].cpu().detach().numpy(), axis=1).tolist()
 
     ##Post is the data you want to enter into the database. Not specifying an ID generates a random one 
-    post= {author": author[0], "source":article.source_url, "content":text,"date":date,"summary":summary,"title":title}
+    post= {"author": author[0], "source":article.source_url, "content":text,"date":date,"summary":summary,"title":title}
     collection.insert_one(post)
 
     
