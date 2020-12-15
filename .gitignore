@@ -13,3 +13,5 @@ articles.csv
 writes_for.csv
 contains.csv
 writes.csv
+newsource.csv
+.env

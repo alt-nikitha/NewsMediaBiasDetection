@@ -1,8 +1,13 @@
 import pandas as pd 
 import re
 import numpy as np
-df= pd.read_csv('articleswithlabels.csv').reset_index(drop=True)
+df1= pd.read_csv('articleswithlabels.csv').reset_index(drop=True)
+df1.loc[(df1[' authors']=="[]")," authors"]=np.nan
+newdf= df1[['title',' authors',' date',' url','Name','Bias']]
+index_with_nan = df1.index[df1.isnull().any(axis=1)]
+df=df1.drop(index_with_nan,0).reset_index(drop=True)
 print(df.columns)
+
 def create_authors():
     # print(df[' authors'])
     authorsmixed=pd.unique(df[' authors'])
@@ -23,14 +28,18 @@ def create_authors():
 
     # print(authorslist)
     authors=sorted(set([x.lower() for x in authorslist]))
-    pd.DataFrame(authors,columns=['Name']).to_csv("authors.csv")
+    newdf=pd.DataFrame(authors,columns=['Name'])
+    newdff=newdf.drop_duplicates(subset='Name')
+    print(len(newdff))
+    newdff.to_csv("authors.csv")
+    
 def create_articles():
     
     articles=df[['title',' date',' url','Bias']]
     
-    final=articles[pd.notnull(articles)]
-    print(final)
-    final.to_csv('articles.csv')
+    newfinal=articles.drop_duplicates(subset=[' url'], keep='last')
+    print(len(newfinal))
+    newfinal.to_csv('articles.csv')
 
 def create_works_for():
     works_for=pd.DataFrame(columns=['Author','News Source'])
@@ -43,14 +52,17 @@ def create_works_for():
             try:
                 authorshere=newele[1].split(",")
                 for ele in authorshere:
-                    row=pd.Series({"Author":ele,"News Source":df.loc[i]['Name']})
+                    row=pd.Series({"Author":ele.lower(),"News Source":df.loc[i]['Name']})
                     works_for.loc[k]=row
                     k+=1
             except:
-                row=pd.Series({"Author":newele,"News Source":df.loc[i]['Name']})
+                print(author)
+                row=pd.Series({"Author":newele.lower(),"News Source":df.loc[i]['Name']})
                 works_for.loc[k]=row
                 k+=1
-    works_for.to_csv("writes_for.csv")
+    newdf=works_for.drop_duplicates()
+    print(len(newdf))
+    newdf.to_csv("writes_for.csv")
 
 
 
@@ -67,18 +79,22 @@ def create_writes():
             try:
                 authorshere=newele[1].split(",")
                 for ele in authorshere:
-                    row=pd.Series({"Author":ele,"ArticleURL":df.loc[i][' url']})
+                    row=pd.Series({"Author":ele.lower(),"ArticleURL":df.loc[i][' url']})
                     writes.loc[k]=row
                     k+=1
             except:
-                row=pd.Series({"Author":newele,"ArticleURL":df.loc[i][' url']})
+                row=pd.Series({"Author":newele.lower(),"ArticleURL":df.loc[i][' url']})
                 writes.loc[k]=row
                 k+=1
-    writes.to_csv("writes.csv")
+    neww=writes.drop_duplicates()
+    print(len(neww))
+    neww.to_csv("writes.csv")
 
 def contains():
     contains=df[['Name',' url']]
-    contains.to_csv('contains.csv')
+    newc=contains.drop_duplicates()
+    # print(newc)
+    newc.to_csv('contains.csv')
     
     pass
 
