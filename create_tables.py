@@ -1,10 +1,11 @@
 import pandas as pd 
 import re
 import numpy as np
+from urllib.parse import urlparse
 
 
 # this is full dataset
-df1= pd.read_csv('articleswithlabels.csv').reset_index(drop=True)
+df1= pd.read_csv('/content/drive/MyDrive/articleswithlabels.csv').reset_index(drop=True)
 
 # replace empty brackets with np.nan
 df1.loc[(df1[' authors']=="[]")," authors"]=np.nan
@@ -17,9 +18,35 @@ index_with_nan = df1.index[df1.isnull().any(axis=1)]
 df=df1.drop(index_with_nan,0).reset_index(drop=True)
 print(df.columns)
 
+def cleaner(name):
+  s= name
+  pattern= "\'(.*?)\'"
+  substring = re.search(pattern, s)
+  if(substring==None):
+    pattern1= "\"(.*?)\""
+    substring1 = re.search(pattern1, s).group(1)
+  if(substring!=None):
+    substring=substring.group(1)
+    f=' '.join(substring.split()[:2])
+  else:
+    f=' '.join(substring1.split()[:2])
+  return f;
+
 
 # to create news_source.csv
-def create_newssource():
+def newsource():
+  sliced=df[['Name','Bias',' url']]
+  new=pd.DataFrame(columns=['Name','Bias','News_Source'])
+  print(len(sliced))
+  for i in range(len(sliced)):
+    url=sliced[' url'][i]
+    parsed_uri = urlparse(url)
+    result = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_uri)
+    row=pd.Series({"Name":sliced['Name'][i],"Bias":sliced['Bias'][i],"News Source":str(result)})
+    new.loc[i]=row
+    i=i+1
+  new.to_csv('newsource.csv')
+
     # NEEEL use the name, bias, news_source url from df 
 
 # to create authors.csv
@@ -45,11 +72,13 @@ def create_authors():
 
             for author in authorshere:
                 # NEEEEL here clean quotes and append that to authorslist instead 
+                author = cleaner(author)
                 authorslist.append(author)
         
         # if there is only one author
         except:
             # NEEEEL here clean quotes, same function as you use above to clean quotes, and append that to authorslist instead 
+            author = cleaner(author)
             authorslist.append(author)
 
     # print(authorslist)
@@ -60,7 +89,7 @@ def create_authors():
     #create new df for the authors.csv 
     newdf=pd.DataFrame(authors,columns=['Name'])
     newdff=newdf.drop_duplicates(subset='Name')
-    print(len(newdff))
+    for author 
     newdff.to_csv("authors.csv")
 
 # to create articles.csv   
@@ -89,12 +118,14 @@ def create_works_for():
 
                 for ele in authorshere:
                     # NEEEL here remove quotes from ele and then use that ele below
+                    ele=cleaner(ele)
                     row=pd.Series({"Author":ele.lower(),"News Source":df.loc[i]['Name']})
                     works_for.loc[k]=row
                     k+=1
             except:
                 print(author)
                 # NEEEEL here remove quotes from newele and use the result below
+                newele=cleaner(newele)
                 row=pd.Series({"Author":newele.lower(),"News Source":df.loc[i]['Name']})
                 works_for.loc[k]=row
                 k+=1
@@ -122,11 +153,13 @@ def create_writes():
                 authorshere=newele[1].split(",")
                 for ele in authorshere:
                     # NEEEL here remove quotes from ele and then use that ele below
+                    ele=cleaner(ele)
                     row=pd.Series({"Author":ele.lower(),"ArticleURL":df.loc[i][' url']})
                     writes.loc[k]=row
                     k+=1
             except:
                 # NEEEEL here remove quotes from newele and use the result below
+                newele=cleaner(newele)
                 row=pd.Series({"Author":newele.lower(),"ArticleURL":df.loc[i][' url']})
                 writes.loc[k]=row
                 k+=1
@@ -146,7 +179,7 @@ def contains():
 
 
 # call all above functions, this will take a few minutes because drop duplicates takes time to search
-create_newssource()
+# create_newssource()
 create_authors()
 create_articles()
 create_works_for()
