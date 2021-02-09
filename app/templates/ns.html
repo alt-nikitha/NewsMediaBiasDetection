@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/util.css')}}">
+	  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/main.css')}}">
+  </head>
+    <body>
+      <div class="bg-contact3" style="background-image: url('images/juliana-malta-Uy0Bq8vYjk4-unsplash.jpg');">
+        <div class="container-contact3">
+          <div class="wrap-contact3">
+            <form class="contact3-form">
+              <span class="contact3-form-title">
+                <h2 style="color:wheat">{{name}} is {{bias}} biased </h2>
+                <h3><a href="{{URL}}" style="color:whitesmoke">
+                  Click here to visit {{name}} <br>
+                  
+                </a></h3>
+              </span>
+              <div class="search_categories align-center">
+                  <div class="select">
+                    <select id="search_categories"  name="menu1" onChange="window.location.href=this.value">
+                        <option value="" disabled selected>Some {{name}} articles</option>
+                        {% for w in otherartsinns %}
+                          <option value="{{w['url']}}">{{ w['title'] }}</option>
+                        {% endfor %}
+                    </select>
+                    
+                  </div>
+              </div>
+
+
+              <div class="search_categories align-center">
+                  <div class="select">
+                    <select id="search_categories"  name="menu2" onChange="window.location.href=this.value">
+                        <option value="" disabled selected>Some {{name}} authors</option>
+                        {% for w in otherauthsinns %}
+                          <option value="{{url_for('author',author=w)}}">{{ w }}</option>
+                        {% endfor %}
+                    </select>
+                    
+                  </div>
+              </div>
+
+
+              <div class="search_categories align-center">
+                  <div class="select">
+                    <select id="search_categories"  name="menu3" onChange="window.location.href=this.value">
+                        <option value="" disabled selected>Other {{bias}} news sources</option>
+                        {% for w in otherbiasns %}
+                          <option value="{{w['url']}}">{{ w['name'] }}</option>
+                        {% endfor %}
+                    </select>
+                    
+                  </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </body>
+</html>
+

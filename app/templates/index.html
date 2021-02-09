@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <!-- ======= Header ======= -->
+  <!-- End #header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" background: transparent;>
+    <div class="hero-container">
+      <h1 style="color:teal; font-weight: 900;">Welcome to News Media Bias Detection</h1>
+      <br>
+      <h2 style="color:thistle">Enter the URL of a news article to detect bias</h2>
+      
+        <form action="{{ url_for('detect') }}" method="post" role="form" class="php-email-form">
+          <div class="row no-gutters">
+            <!-- <div class="col-md-6 form-group pr-md-1"> -->
+            
+              <input type="url" name="name" class="search-categories" id="name" placeholder="Enter URL" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+              <!-- <div class="validate"></div> -->
+            
+          </div>
+          <button type="submit" name="submit1" value="submit">Detect Bias </button>
+        </form>
+        <br>
+        <div>
+          <h2 style="color:thistle"> OR </h2>
+        </div>
+        
+     
+        <h2 style="color:thistle"> Choose from the news sources below to see their general bias </h2>
+        <form action="{{ url_for('select') }}" method="POST" role="form" class="php-email-form">
+          <div class="row no-gutters">
+          <div class="search_categories">
+            <div class="select">
+              <select id="search_categories"  name="menu">
+                  <option value="" disabled selected>Choose News Source</option>
+                  {% for n in ns %}
+                    <option value={{n}}>{{ n }}</option>
+                  {% endfor %}
+              </select>
+              
+            </div>
+          </div>
+        </div>
+          <button type="submit" name="submit2" value="submit">Choose </button>
+        </form>
+      
+    </div>
+    {% if option %}
+      <p> {{option}}</p>
+    {% endif%}
+  </section><!-- #hero -->
+  
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-6">
+            <img src="assets/img/about-img.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <h3>What is Media Bias?</h3>
+            <p class="font-italic">
+              In simple terms
+            </p>
+            <ul>
+              <li><i class="fa fa-check" aria-hidden="true"></i> The news reporter or news source exhibits inclination towards one particular type of ideology</li>
+              <li><i class="fa fa-check" aria-hidden="true"></i> These are usually categorised as left, left-center, center, right-center, right.</li>
+              <li><i class="fa fa-check" aria-hidden="true"></i> <a href="https://mediabiasfactcheck.com">For more information click here</a></li>
+            </ul>
+            <p>
+              This app allows you to get results for an article of your choice, or to choose from the news sources we provide.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+   
+
+    <!-- ======= Contact Us Section ======= -->
+    <section id="contact" class="contact section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Contact Us</h2>
+        </div>
+
+        <div class="row justify-content-center">
+
+          <div class="col-lg-3 col-md-5 mb-5 mb-md-0">
+            <div class="info">
+              <div class="address">
+                <i class="bx bx-map"></i>
+                <p>RV<br>Bangalore, 535022</p>
+              </div>
+
+              <div class="email">
+                <i class="bx bx-envelope"></i>
+                <p>newsmediabias@aicookies.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bx bx-phone-call"></i>
+                <p>+1 5589 55488 55s</p>
+              </div>
+            </div>
+            
+            <!-- <div class="social-links">
+              <a href="https://github.com/alt-nikitha/NewsMediaBiasDetection" class="github"><i class="bx bxl-github"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> 
+              <a href="#" class="reddit"><i class="bx bxl-reddit"></i></a>  -->
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Us Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <!-- End #footer -->
+
+  <!-- Vendor JS Files -->
+  
+  {% endblock content %}

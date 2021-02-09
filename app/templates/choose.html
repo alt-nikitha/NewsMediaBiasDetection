@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+<section id="hero">
+    <div class="hero-container">
+        
+        <h2><a href="{{URL}}" style="color:teal">{{title}}</a> </h2>
+            <!-- <p>{{ns}}</p> -->
+            <div id="toggles">
+                <div class="toggles">
+                    <input type="checkbox" id="checkbox1" class="ios-toggle" name="checkbox1" onclick="verifyChecks('checkbox1','text1')"/><label for="checkbox1" class="checkbox-label" data-off="News Source" data-on="News Source"></label>
+                    
+                </div>
+                <div class="toggles">
+                    <input type="checkbox" id="checkbox2" class="ios-toggle" name="checkbox2" onclick="verifyChecks('checkbox2','text2')"/><label for="checkbox2"class="checkbox-label" data-off="Bias" data-on="Bias"> </label>
+                    
+                </div>
+                <div class="toggles">
+                    <input type="checkbox" id="checkbox3" class="ios-toggle" name="checkbox3" onclick="verifyChecks('checkbox3','text3')"/><label for="checkbox3"class="checkbox-label" data-off="Author" data-on="Author"></label>
+                    
+                </div>
+                <div class="toggles">
+                    <input type="checkbox" id="checkbox4" class="ios-toggle" name="checkbox4" onclick="verifyChecks('checkbox4','text4')"/><label for="checkbox4"class="checkbox-label" data-off="Date" data-on="Date"></label>
+                    
+                </div>
+                <div class="toggles">
+                    <input type="checkbox" id="checkbox5" class="ios-toggle" name="checkbox5" onclick="verifyChecks('checkbox5','text5')"/><label for="checkbox5"class="checkbox-label" data-off="Summary" data-on="Summary"></label>
+                    
+                </div>
+                <div class="toggles">
+                  <input type="checkbox" id="checkbox6" class="ios-toggle" name="checkbox6" onclick="verifyChecks('checkbox6','text6')"/><label for="checkbox6"class="checkbox-label" data-off="Polarity" data-on="Polarity"></label>
+                  
+              </div>
+              <div class="toggles">
+                <input type="checkbox" id="checkbox7" class="ios-toggle" name="checkbox7" onclick="verifyChecks('checkbox7','text7')"/><label for="checkbox7"class="checkbox-label" data-off="Subjectivity" data-on="Subjectivity"></label>
+                
+            </div>
+            </div>
+            <!-- <input type="submit" name="submit3" value="submit">Choose </button> -->
+            <div class="php-email-form">
+              <div class="search_categories">
+                <div class="select">
+                  <select id="search_categories"  name="menu" onChange="window.location.href=this.value">
+                      <option value="" disabled selected>Articles from this source</option>
+                      {% for c in containing %}
+                        <option value={{c}}>{{ c }}</option>
+                      {% endfor %}
+                  </select>
+                  
+                </div>
+            </div>
+            <br>
+            <div class="search_categories">
+                <div class="select">
+                  <select id="search_categories"  name="menu" onChange="window.location.href=this.value">
+                      <option value="" disabled selected>Articles by this author</option>
+                      {% for w in written %}
+                        <option value={{w}}>{{ w }}</option>
+                      {% endfor %}
+                  </select>
+                  
+                </div>
+            </div>
+          </div>
+            
+
+    </div>
+  </section>
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <p id="text1" style="display:none;color: black; font-family: 'Raleway', sans-serif;">News Source : {{ns}}</p>
+        
+        <p id="text2" style="display:none;color: black; font-family: 'Raleway', sans-serif;">Bias : {{bias}}</p>
+        <p id="text3" style="display:none;color: black; font-family: 'Raleway', sans-serif;">Author : {{author}}</p>
+        
+        <p id="text4" style="display:none;color: black; font-family: 'Raleway', sans-serif;">Date : {{date}}</p>
+        <p id="text5" style="display:none;color: black; font-family: 'Raleway', sans-serif;">Summary : {{summary}}</p>
+        <p id="text6" style="display:none;color: black; font-family: 'Raleway', sans-serif;">Polarity : {{polarity}}</p>
+        <p id="text7" style="display:none;color: black; font-family: 'Raleway', sans-serif;">Subjectivity : {{subjectivity}}</p>
+
+  <script>
+    function verifyChecks(checkboxno,textno) {
+    // Get the checkbox
+    var checkBox = document.getElementById(checkboxno);
+    // Get the output text
+    var text = document.getElementById(textno);
+
+    // If the checkbox is checked, display the output text
+    if (checkBox.checked == true){
+        console.log(text);
+        text.style.display = "block";
+    } else {
+        text.style.display = "none";
+        console.log("haha2");
+  }
+}
+</script>
+{% endblock content %}

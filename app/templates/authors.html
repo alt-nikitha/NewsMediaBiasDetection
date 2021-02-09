@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/util.css')}}">
+	  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/main.css')}}">
+  </head>
+    <body>
+
+      <div class="bg-contact3" style="background-image: url('images/juliana-malta-Uy0Bq8vYjk4-unsplash.jpg');">
+        <div class="container-contact3">
+          <div class="wrap-contact3">
+            <form class="contact3-form">
+              <span class="contact3-form-title">
+                <h3 style="color:wheat">Author : {{author}} </h3>
+              </span>
+
+              <div class="search_categories align-center">
+                  <div class="select">
+                    <select id="search_categories"  name="menu2" onChange="window.location.href=this.value">
+                        <option value="" disabled selected>Other {{author}} articles</option>
+                        {% for w in otherartsbyauthor %} 
+                          <option value="{{w['url']}}">{{ w['title'] }}</option>
+                        {% endfor %}
+                    </select>
+                    
+                  </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </body>
+</html>

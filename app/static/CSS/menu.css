@@ -1,0 +1,104 @@
+/* *,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+} */
+
+/* html {
+  font-size: 62.5%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #E8F0FC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+.menu {
+  border-radius: 0.4rem;
+  position: relative;
+
+  width: 30rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #687F98;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translateY(0);
+  transition: transform 0.4s cubic-bezier(0.28, 0.25, 0.36, 1.28);
+  padding: 1.8rem 2.4rem;
+  cursor: pointer;
+  box-shadow: 0rem 0rem 3rem #d1e1f9;
+  z-index: 2;
+}
+.menu__icon-box {
+  width: 1rem;
+  height: 1rem;
+  margin-top: -0.3rem;
+}
+.menu__icon {
+  width: 1rem;
+  height: 1rem;
+  border-top: 0.15rem solid #687F98;
+  border-right: 0.15rem solid #687F98;
+  transition: all 0.3s ease-in-out;
+  transform: rotate(135deg);
+}
+.menu__dropdown {
+  width: 30rem;
+  font-weight: lighter;
+  max-height:250px;/* you can change as you need it */
+  overflow:auto;
+  margin-left: -2.4rem;
+  position: absolute;
+  top: 5.2rem;
+  opacity: 0;
+  display: none;
+  padding: 1.8rem 2.4rem 1.6rem 2.4rem;
+  border-radius: 0 0 0.4rem 0.4rem;
+  background-color: white;
+  border-top: 0.2rem solid #EEF3F6;
+  z-index: -999;
+}
+.menu__dropdown-option {
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.4rem;
+}
+.menu__dropdown-option:hover {
+  background-color: #E8F0FC;
+}
+.menu__active {
+  transform: translateY(-3rem);
+  border-radius: 0.4rem 0.4rem 0 0;
+}
+.menu__active .menu__icon {
+  transform: rotate(-45deg);
+  margin-top: 0.5rem;
+}
+.menu__active .menu__dropdown {
+  opacity: 1;
+  display: block;
+  animation: showDropdownMenu 0.4s cubic-bezier(0.28, 0.25, 0.36, 1.28);
+}
+
+@keyframes showDropdownMenu {
+  0% {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+}
+

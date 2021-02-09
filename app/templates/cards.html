@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<div class="gridContainer">
+		<link rel="stylesheet" href="{{url_for('static', filename='CSS/cards.css')}}">
+	<div class="columns">
+		<div class="flip-card text-center">
+			<div class="flip-card-front">
+				<div class="flip-card-inner">
+					<img style="max-height:250px; max-width: 400px;;" src="{{url_for('static', filename='images/summary.png')}}">
+				</div>
+			</div>
+			<div class="flip-card-back bg-color no-after">
+				<div class="flip-card-inner">
+					<h3 class="mb-2 text-white">News Source </h3>
+					<a href="{{ns}}" class="mb-2 text-white">{{nsname}}</p>
+					<br>
+					<a href="#">Click here to view summary</a>
+					<a href="{{url_for('ns',name=nsname)}}">Click here to view results for this news source</a>
+					<!-- <p class="mb-2 text-white">{{summary}}</p> -->
+				</div>
+			</div>
+		</div>
+		<div class="flip-card text-center">
+			<div class="flip-card-front">
+				<div class="flip-card-inner">
+					<img style="max-height:250px; max-width: 400px;" src="{{url_for('static', filename='images/bias.png')}}">
+				</div>
+			</div>
+			<div class="flip-card-back bg-color no-after">
+				<div class="flip-card-inner">
+					<h3 class="mb-2 text-white">Bias </h3>
+					<p class="mb-2 text-white">{{bias}}</p>
+					<br>
+					<br>
+					<!-- <div class="search_categories">
+						<div class="select">
+						  <select id="search_categories"  name="menu" onChange="window.location.href=this.value">
+							  <option value="" disabled selected>Other Articles from this source</option>
+							  {% for c in containing %}
+								<option value={{c}}>{{ c }}</option>
+							  {% endfor %}
+						  </select>
+						  
+						</div>
+					</div> -->
+					<a href="{{url_for('bias',label=bias)}}">Click here to view other results for same bias</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="columns">
+		<div class="flip-card text-center">
+			<div class="flip-card-front">
+				<div class="flip-card-inner">
+					<img style="max-height:250px; max-width: 400px;" src="{{url_for('static', filename='images/polarity.png')}}">
+				</div>
+			</div>
+			<div class="flip-card-back bg-color no-after">
+				<div class="flip-card-inner">
+					<h3 class="mb-2 text-white">Polarity</h3>
+					<p class="mb-2 text-white">{{polarity}}</p>
+				</div>
+			</div>
+		</div>
+	
+		<div class="flip-card text-center">
+			<div class="flip-card-front">
+				<div class="flip-card-inner">
+					<img style="max-height:250px; max-width: 400px;;" src="{{url_for('static', filename='images/subj.png')}}">
+				</div>
+			</div>
+			<div class="flip-card-back bg-color no-after">
+				<div class="flip-card-inner">
+					<h3 class="mb-2 text-white">Subjectivity</h3>
+					<p class="mb-2 text-white">{{subjectivity}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="columns">
+		<div class="flip-card text-center">
+			<div class="flip-card-front">
+				<div class="flip-card-inner">
+					<img style="max-height:250px; max-width: 400px;" src="{{url_for('static', filename='images/author.png')}}">
+					
+				</div>
+			</div>
+			<div class="flip-card-back bg-color no-after">
+				<div class="flip-card-inner">
+					<h3 class="mb-2 text-white">Author</h3>
+					<p class="mb-2 text-white">{{authors}}</p>
+					<br>
+					<br>
+					<div class="container">
+						<div class="search_categories">
+							<div class="select">
+							  <select id="search_categories"  name="menu" onChange="window.location.href=this.value">
+								  <option value="" disabled selected>Other Articles by this author(s)</option>
+								  {% for w in authors %}
+									<option value="{{url_for('author',author=w)}}">{{ w }}</option>
+								  {% endfor %}
+							  </select>
+							  
+							</div>
+						</div>
+					</div>
+					<!-- {% for w in authors %}
+						<a herf="{{url_for('author',author=w)}}">Click here to view articles by {{w}}</a>
+					{% endfor %} -->
+				</div>
+			</div>
+		</div>
+		
+		<div class="flip-card text-center">
+			<div class="flip-card-front">
+				<div class="flip-card-inner">
+					<img style="max-width: 400px; max-height: 250px;" src="{{url_for('static', filename='images/date.png')}}">
+				</div>
+			</div>
+			<div class="flip-card-back bg-color no-after">
+				<div class="flip-card-inner">
+					<h3 class="mb-2 text-white">Date</h3>
+					<p class="mb-2 text-white">{{date}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</html>

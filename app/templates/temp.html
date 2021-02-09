@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>News Media Bias Detection</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/icons/favicon.ico')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/animate/animate.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css-hamburgers/hamburgers.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/select2/select2.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/util.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/main.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/menu.css')}}">
+<!--===============================================================================================-->
+</head>
+<body>
+
+	<div class="bg-contact3" style="background-image: url('images/juliana-malta-Uy0Bq8vYjk4-unsplash.jpg');">
+		<div class="container-contact3">
+			<div class="wrap-contact3">
+				<form class="contact3-form" action="{{url_for('detect')}}" method="POST">
+					<span class="contact3-form-title">
+						News Bias Detection System
+					</span>
+
+						
+
+					<div class="wrap-input3 validate-input" data-validate="URL is required">
+							<input class="input3" type="url" name="name" placeholder="Enter URL">
+							<span class="focus-input3"></span>
+					</div>
+
+					
+					<button class="contact3-form-btn" type="submit" name="submit1" value="submit">
+						Submit
+					</button>
+					
+				</form>
+				<br>
+				<h3 style="color: white; text-align:center">OR</h3>
+				<br>
+				<form action="{{url_for('select')}}" method="POST" role="form">
+
+	
+
+					<div class="wrap-input3 ">
+<!-- 
+
+						<div class="menu" id="menu-drop">
+							
+						  <span class="select">Choose a news source</span>
+						  <div class="menu__icon-box">
+							  <div class="menu__icon"></div>
+						  </div>
+						  <div class="menu__dropdown">
+							{% for n in ns %}
+								<div class="menu__dropdown-option">{{n}}</div>
+							{% endfor %}
+						  </div>
+						  <script src="menu.js"></script>
+						</div> -->
+						<div class="search_categories">
+							<div class="select">
+							  <select id="search_categories"  name="menu">
+								  <option value="" disabled selected>Choose a news source</option>
+								  {% for n in ns %}
+									<option value="{{n}}">{{ n }}</option>
+								  {% endfor %}
+							  </select>
+							  
+							</div>
+						</div>
+
+
+						
+					</div>
+
+					
+					<button class="contact3-form-btn" type="submit" name="submit2" value="submit">
+						Submit
+					</button>
+					<script src="{{url_for('static',filename='js/menu.js')}}"></script>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+	<!-- <script src="vendor/jquery/jquery-3.2.1.min.js"></script> -->
+<!--===============================================================================================-->
+	<!-- <script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script> -->
+<!--===============================================================================================-->
+	<!-- <script src="vendor/select2/select2.min.js"></script>
+	<script>
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+	</script> -->
+<!--===============================================================================================-->
+	<!-- <script src="js/main.js"></script> -->
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script> -->
+<!-- <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script> -->
+
+</body>
+</html>

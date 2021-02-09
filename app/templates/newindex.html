@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<header id="showcase">
+    <link rel="stylesheet" href="{{url_for('static', filename='/CSS/css1.css')}}">
+    <div style="background-color:beige;opacity: 0.7; margin:0;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;font-size:17px;
+    color:#926239;
+    line-height:1.6;">
+        <h1>News Bias Detection System</h1>
+        <p>The News Bias Detection System is a software tool designed to detect political bias in news articles.</p>
+        
+    </div>
+    <a href="{{ url_for('temp') }}" class="button" style="background-color:beige;color:black; border:wheat 1px solid;">Use tool</a>
+    
+</header>
+<main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about" style="margin-left: 30px;">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-6">
+            <img src="assets/img/about-img.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <h3>What is Media Bias?</h3>
+            <ul>
+              <li><i class="fa fa-check" aria-hidden="true"></i> The news reporter or news source exhibits inclination towards one particular type of ideology</li>
+              <li><i class="fa fa-check" aria-hidden="true"></i> These are usually categorised as left, left-center, center, right-center, right.</li>
+              <li><i class="fa fa-check" aria-hidden="true"></i> <a href="https://mediabiasfactcheck.com">For more information click here</a></li>
+            </ul>
+            <p>
+              This web app allows you to get results for an article of your choice, or to choose from the news sources we provide.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+   
+
+   
+    
+</html>
