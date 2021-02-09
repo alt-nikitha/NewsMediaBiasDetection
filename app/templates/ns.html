@@ -4,7 +4,15 @@
   <head>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/util.css')}}">
 	  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/main.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='CSS/header.css')}}">
   </head>
+  <header>
+		<ul>
+			<li>
+				<a href= "{{url_for('index')}}"> Home </a>
+			</li>
+		</ul>
+	</header>
     <body>
       <div class="bg-contact3" style="background-image: url('images/juliana-malta-Uy0Bq8vYjk4-unsplash.jpg');">
         <div class="container-contact3">
@@ -12,10 +20,10 @@
             <form class="contact3-form">
               <span class="contact3-form-title">
                 <h2 style="color:wheat">{{name}} is {{bias}} biased </h2>
-                <h3><a href="{{URL}}" style="color:whitesmoke">
+                <!-- <h3><a href="{{URL}}" style="color:whitesmoke">
                   Click here to visit {{name}} <br>
                   
-                </a></h3>
+                </a></h3> -->
               </span>
               <div class="search_categories align-center">
                   <div class="select">
@@ -29,7 +37,7 @@
                   </div>
               </div>
 
-
+              <br>
               <div class="search_categories align-center">
                   <div class="select">
                     <select id="search_categories"  name="menu2" onChange="window.location.href=this.value">
@@ -41,7 +49,7 @@
                     
                   </div>
               </div>
-
+              <br>
 
               <div class="search_categories align-center">
                   <div class="select">

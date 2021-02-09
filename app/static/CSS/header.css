@@ -1,0 +1,39 @@
+
+* {
+	margin: 0px; 
+	padding: 0px; 
+	box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  margin:0;
+	font-family: Poppins-Regular, sans-serif;
+}
+
+header {
+  /* padding: 10px 16px; */
+  width: 100%;
+  background-color: rgba(0,0,0, 0.2);
+  /* color: none;
+  opacity: 1;
+  transition: all 0.2s ease-in-out; */
+}
+
+header ul{
+  text-align:center;
+}
+
+header ul li{
+  list-style: none;
+  display: inline-block;
+}
+
+header ul li a{
+  display:block;
+  text-decoration:none;
+  text-transform: uppercase;
+  color: white;
+  font-size:20px;
+  font-family: 'Narrow Ariel';
+}

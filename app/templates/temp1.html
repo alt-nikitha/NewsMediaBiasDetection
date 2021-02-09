@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>News Media Bias Detection</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="menu.css">
+    <link rel="stylesheet" type="text/css" href="dropcss.css">
+<!--===============================================================================================-->
+</head>
+<header>
+
+</header>
+<body>
+    <div class="header">
+		<ul>
+			<li>
+				<a href= "../newindex.html"> Home </a>
+			</li>
+		</ul>
+	</div>
+	<div class="bg-contact3" style="background-image: url('images/bg-01.jpg');">
+		<div class="container-contact3">
+			<div class="wrap-contact3">
+				<form class="contact3-form" action="{{url_for('detect')}}" method="POST">
+					<span class="contact3-form-title">
+						News Bias Detection System
+					</span>
+
+						
+
+					<div class="wrap-input3 validate-input" data-validate="URL is required">
+							<input class="input3" type="url" name="name" placeholder="Enter URL">
+							<span class="focus-input3"></span>
+					</div>
+
+					
+					<button class="contact3-form-btn" type="submit" name="submit1" value="submit">
+						Submit
+					</button>
+					
+                </form>
+				<br>
+				<h3 style="color: white; text-align:center">OR</h3>
+				<br>
+				<form action="{{url_for('select')}}" method="POST" role="form">
+
+	
+
+					<div class="wrap-input3 ">
+
+
+						<!-- <div class="menu" id="menu-drop">
+                            <link rel="stylesheet" href="menu.css">
+                          <span class="select">Select an option</span>
+                          <div class="menu__icon-box">
+                              <div class="menu__icon"></div>
+                          </div>
+                          <div class="menu__dropdown">
+                            <div class="menu__dropdown-option">An Option</div>
+                            <div class="menu__dropdown-option">Just another option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                            <div class="menu__dropdown-option">By far the coolest option</div>
+                          </div>
+                          <script src="menu.js"></script>
+                        </div> -->
+
+                        <div class='swanky_wrapper'>
+                            <input id='Dashboard' name='radio' type='radio'>
+                            <label for='Dashboard'>
+                              <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/dash.png'>
+                              <span>Pick News Source</span>
+                              <div class='lil_arrow'></div>
+                              <div class='bar'></div>
+                              <div class='swanky_wrapper__content'>
+                                <ul>
+                                  <li>Tools</li>
+                                  <li>Reports</li>
+                                  <li>Analytics</li>
+                                  <li>Code Blocks</li>
+                                  <li>Crap</li>
+                                  
+                                </ul>
+                              </div>
+                            </label>
+                            
+                          </div>
+                          <!-- /////////// End Dropdown //////////// -->
+                        </div>
+                        
+						<!-- <div class="search_categories">
+							<div class="select">
+							  <select id="search_categories"  name="menu">
+								  <option value="" disabled selected>Choose a news source</option>
+								  {% for n in ns %}
+									<option value="{{n}}">{{ n }}</option>
+								  {% endfor %}
+							  </select>
+							  
+							</div>
+						</div> -->
+
+
+						
+					
+
+					
+					<button class="contact3-form-btn" type="submit" name="submit2" value="submit">
+						Submit
+					</button>
+					<script src="{{url_for('static',filename='js/menu.js')}}"></script>
+          </div>
+        </form>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+	<!-- <script src="vendor/jquery/jquery-3.2.1.min.js"></script> -->
+<!--===============================================================================================-->
+	<!-- <script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script> -->
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+	<script>
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+	</script>
+<!--===============================================================================================-->
+	<!-- <script src="js/main.js"></script> -->
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script> -->
+<!-- <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script> -->
+
+</body>
+</html>

@@ -20,8 +20,16 @@
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/util.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/main.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/menu.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='CSS/header.css')}}">
 <!--===============================================================================================-->
 </head>
+<header>
+	<ul>
+		<li>
+			<a href= "{{url_for('index')}}"> Home </a>
+		</li>
+	</ul>
+</header>
 <body>
 
 	<div class="bg-contact3" style="background-image: url('images/juliana-malta-Uy0Bq8vYjk4-unsplash.jpg');">
@@ -53,21 +61,7 @@
 	
 
 					<div class="wrap-input3 ">
-<!-- 
 
-						<div class="menu" id="menu-drop">
-							
-						  <span class="select">Choose a news source</span>
-						  <div class="menu__icon-box">
-							  <div class="menu__icon"></div>
-						  </div>
-						  <div class="menu__dropdown">
-							{% for n in ns %}
-								<div class="menu__dropdown-option">{{n}}</div>
-							{% endfor %}
-						  </div>
-						  <script src="menu.js"></script>
-						</div> -->
 						<div class="search_categories">
 							<div class="select">
 							  <select id="search_categories"  name="menu">
@@ -95,33 +89,23 @@
 	</div>
 
 
-	<div id="dropDownSelect1"></div>
 
-<!--===============================================================================================-->
-	<!-- <script src="vendor/jquery/jquery-3.2.1.min.js"></script> -->
-<!--===============================================================================================-->
-	<!-- <script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script> -->
-<!--===============================================================================================-->
+
+
+	
+
 	<!-- <script src="vendor/select2/select2.min.js"></script>
 	<script>
 		$(".selection-2").select2({
 			minimumResultsForSearch: 20,
 			dropdownParent: $('#dropDownSelect1')
 		});
+
+		$('.ns').click(function () {
+			var val = $(this).attr('id');
+			$('#ns').val(val);
+		});
 	</script> -->
-<!--===============================================================================================-->
-	<!-- <script src="js/main.js"></script> -->
-
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script> -->
-<!-- <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-23581568-13');
-</script> -->
 
 </body>
 </html>

@@ -1,3 +1,10 @@
+.body {
+	background-image:url('../images/juliana-malta-Uy0Bq8vYjk4-unsplash.jpg');
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 100%;  
+}
 .gridContainer {
 	padding: 10px 5px;
 	display: grid;
@@ -5,7 +12,7 @@
 	grid-gap: 20px;
 	/* THE MAGIC: */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    background-image:url('../images/juliana-malta-Uy0Bq8vYjk4-unsplash.jpg');
+    
     border-collapse:separate; 
     border-spacing:0 15px;
 }

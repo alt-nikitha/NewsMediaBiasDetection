@@ -16,7 +16,6 @@
 					<br>
 					<a href="#">Click here to view summary</a>
 					<a href="{{url_for('ns',name=nsname)}}">Click here to view results for this news source</a>
-					<!-- <p class="mb-2 text-white">{{summary}}</p> -->
 				</div>
 			</div>
 		</div>
@@ -32,17 +31,7 @@
 					<p class="mb-2 text-white">{{bias}}</p>
 					<br>
 					<br>
-					<!-- <div class="search_categories">
-						<div class="select">
-						  <select id="search_categories"  name="menu" onChange="window.location.href=this.value">
-							  <option value="" disabled selected>Other Articles from this source</option>
-							  {% for c in containing %}
-								<option value={{c}}>{{ c }}</option>
-							  {% endfor %}
-						  </select>
-						  
-						</div>
-					</div> -->
+				
 					<a href="{{url_for('bias',label=bias)}}">Click here to view other results for same bias</a>
 				</div>
 			</div>
@@ -104,9 +93,7 @@
 							</div>
 						</div>
 					</div>
-					<!-- {% for w in authors %}
-						<a herf="{{url_for('author',author=w)}}">Click here to view articles by {{w}}</a>
-					{% endfor %} -->
+					
 				</div>
 			</div>
 		</div>

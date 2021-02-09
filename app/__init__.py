@@ -46,7 +46,7 @@ def detect():
     # nsname=nobj.brand
     nobj=NewsSource.query.filter_by(URL=source_url).first_or_404()
     nsname=nobj.name
-    if(bias=='nan'):
+    if(bias=='nan' or bias == None):
         bias='center'
     if(text):
         pdb.add_to_mongo(collection,date,summary,title,authors,source_url,text)
@@ -68,7 +68,7 @@ def detect():
                 
             )
             
-            return render_template('cards.html', **context)
+            return render_template('cards1.html', **context)
         else:
             return render_template('error.html')
     else:
@@ -80,7 +80,7 @@ def detect():
 def select():
 
     req = request.form['menu']
-    otherbias,bias,URL=q.find_same_bias_news(name=req,dd=True)
+    otherbias,bias,URL=q.find_same_bias_news(name=req)
     return render_template('results.html',ns=req, bias=bias,URL=URL,otherbias=otherbias)
 
 @app.route('/temp',methods=['POST','GET'])
@@ -116,16 +116,15 @@ def bias(label):
 
     return render_template('bias.html',**context)
 
-@app.route('/ns/<name>')
-def ns(name):
+@app.route('/ns/<name>/<bias>')
+def ns(name,bias):
     # name=request.args.get('name',None)
     otherartsinns=q.find_same_news_source_articles(name)
     otherauthsinns=q.find_same_news_source_author(name)
-    otherbiasns,bias,URL=q.find_same_bias_news(name=name)
+    otherbiasns=q.find_same_bias_news(label=bias)
     context=dict( 
         otherbiasns=otherbiasns,
         bias=bias,
-        URL=URL,
         otherartsinns=otherartsinns,
         otherauthsinns=otherauthsinns,
         name=name

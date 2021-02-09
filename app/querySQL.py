@@ -139,23 +139,23 @@ def find_same_bias_articles(label):
             otherartsbias.append(odic)
     return otherartsbias
 
-def find_same_bias_news(label=None,name=None, dd=False):
+def find_same_bias_news(label=None,name=None):
     otherbias=[]
-    if(name and not(dd) ):
-        nobj=NewsSource.query.filter_by(name=name).first_or_404()
-        # obj=NewsSourceDropDown.query.filter_by(URL=nobj.URL).first_or_404()
-        # print(obj.name, obj.URL)
-        otherbiasobj=NewsSourceDropDown.query.filter_by(bias=nobj.bias)
+    # if(name and not(dd) ):
+    #     nobj=NewsSource.query.filter_by(name=name).first_or_404()
+    #     # obj=NewsSourceDropDown.query.filter_by(URL=nobj.URL).first_or_404()
+    #     # print(obj.name, obj.URL)
+    #     otherbiasobj=NewsSourceDropDown.query.filter_by(bias=nobj.bias)
         
-        # find other news sources with same bias
-        if(otherbiasobj):
-            for news in otherbiasobj:
-                otherdic={}
-                otherdic['name']=news.name
-                otherdic['url']=news.URL
-                otherbias.append(otherdic)
-            return otherbias,nobj.bias,nobj.URL
-    if(name and dd):
+    #     # find other news sources with same bias
+    #     if(otherbiasobj):
+    #         for news in otherbiasobj:
+    #             otherdic={}
+    #             otherdic['name']=news.name
+    #             otherdic['url']=news.URL
+    #             otherbias.append(otherdic)
+    #         return otherbias
+    if(name):
         # nobj=NewsSource.query.filter_by(name=name).first_or_404()
         obj=NewsSourceDropDown.query.filter_by(name=name).first_or_404()
         # print(obj.name, obj.URL)
